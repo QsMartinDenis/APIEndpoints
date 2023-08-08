@@ -52,7 +52,7 @@ class Build : NukeBuild
         {
             DotNetTasks.DotNetTest(s => s
             .SetProjectFile(Solution)
-            .SetConfiguration(Configuration)
+            .SetConfiguration(Configuration.Debug)
             .EnableNoRestore()
             .EnableNoBuild()
         );
