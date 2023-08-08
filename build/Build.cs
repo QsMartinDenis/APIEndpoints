@@ -45,4 +45,16 @@ class Build : NukeBuild
             DotNetTasks.DotNetBuild(s => s
                .SetProjectFile(Solution));
         });
+
+    Target Test => _ => _
+        .DependsOn(Compile)
+        .Executes(() =>
+        {
+            DotNetTasks.DotNetTest(s => s
+            .SetProjectFile(Solution)
+            .SetConfiguration(Configuration)
+            .EnableNoRestore()
+            .EnableNoBuild()
+        );
+        });
 }
